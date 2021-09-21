@@ -1,0 +1,4 @@
+int32 seq
+---
+int32 seq
+byte[1048576] output_tensor
