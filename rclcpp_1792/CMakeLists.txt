@@ -13,6 +13,20 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Foo.msg"
 )
 
+#rosidl_target_interfaces(
+rosidl_get_typesupport_target(cpp_typesupport_target
+  ${PROJECT_NAME}
+  "rosidl_typesupport_cpp"
+)
+
+add_executable(test_foo src/test_foo.cpp)
+target_link_libraries(test_foo ${cpp_typesupport_target})
+
+install(TARGETS
+  test_foo
+  DESTINATION ${CMAKE_INSTALL_BINDIR}/${PROJECT_NAME}
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
