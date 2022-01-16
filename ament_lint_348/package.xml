@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>ament_lint_348</name>
+  <version>0.0.0</version>
+  <description>This is a package description</description>
+
+  <maintainer email="abc@def.com">John</maintainer>
+  <license>MIT</license>
+
+  <author email="abc@def.com">Jane</author>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <test_depend>ament_cmake_xmllint</test_depend>
+
+  <group_depend>foo</group_depend>
+  <member_of_group>bar</member_of_group>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
