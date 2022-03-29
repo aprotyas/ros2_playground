@@ -1,9 +1,11 @@
-#include <iostream>
+#include <chrono>
 
 #include "rclcpp/rclcpp.hpp"
 #include "rcl_interfaces/msg/integer_range.hpp"
 #include "rcl_interfaces/msg/parameter_descriptor.hpp"
 #include "rcl_interfaces/msg/parameter_type.hpp"
+
+using namespace std::chrono_literals;
 
 int main(int argc, char * argv[])
 {
@@ -21,7 +23,11 @@ int main(int argc, char * argv[])
 
 	node->declare_parameter("foo", rclcpp::ParameterValue(5), range_descriptor);
 
-	RCLCPP_INFO(node->get_logger(), "%d", static_cast<int>(res.successful));
+	rclcpp::WallRate loop_rate(500ms);
+	while (rclcpp::ok()) {
+		RCLCPP_INFO(node->get_logger(), "%ld", node->get_parameter("foo").get_value<int>());
+		loop_rate.sleep();
+	}
 	rclcpp::shutdown();
 	return 0;
 }
