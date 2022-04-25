@@ -42,8 +42,9 @@ class DynamicSubscriptions(Node):
             self.get_logger().info(f"topic {topic} subscription {sub}")
 
     def make_callback(self, topic_name):
-        def callback(msg):
-            self.get_logger().info("Inside {topic_name} callback, got {msg}")
+        def callback(self, msg):
+            self.get_logger().info(f"Inside {topic_name} callback, got {msg}")
+        setattr(self, 'callback', callback.__get__(self, self.__class__))
         return self.callback
 
 
