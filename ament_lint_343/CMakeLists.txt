@@ -13,8 +13,8 @@ if(BUILD_TESTING)
 
   set(
     _linter_excludes
-    include/ament_lint_343/skip1.hpp
-    include/ament_lint_343/skip2.hpp
+    include/ament_lint_343/skip.hpp
+    include/ament_lint_343/skip.cpp
   )
   set(AMENT_LINT_AUTO_FILE_EXCLUDE ${_linter_excludes})
 
